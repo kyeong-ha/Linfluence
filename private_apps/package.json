@@ -1,7 +1,7 @@
 {
   "name": "private_apps",
   "version": "1.0.0",
-  "main": "index.tsx",
+"main": "index.tsx",
   "license": "MIT",
   "dependencies": {
     "@babel/preset-typescript": "^7.22.5",
@@ -11,6 +11,7 @@
     "ts-node": "^10.9.1"
   },
   "scripts": {
+    "serve": "ts-node ./server/server.ts",
     "dev": "webpack-dev-server --config webpack.dev.js --open --hot",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack --config webpack.dev.js"
