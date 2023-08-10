@@ -1,5 +1,5 @@
 {
-  "name": "private_server",
+  "name": "public_server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
