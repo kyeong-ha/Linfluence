@@ -1,20 +1,23 @@
 {
   "name": "private_apps",
   "version": "1.0.0",
-"main": "index.tsx",
+  "main": "index.tsx",
   "license": "MIT",
+  "proxy": "http://localhost:5002",
   "dependencies": {
     "@babel/preset-typescript": "^7.22.5",
+    "axios": "^1.4.0",
+    "concurrently": "^8.2.0",
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "serve": "ts-node ./server/server.ts",
-    "dev": "webpack-dev-server --config webpack.dev.js --open --hot",
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack --config webpack.dev.js"
+    "server": "ts-node ./express/server.tsx",
+    "client-dev": "webpack-dev-server --config webpack.dev.js --open --hot",
+    "client-build": "webpack --config webpack.prod.js",
+    "client-start": "webpack --config webpack.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -30,6 +33,7 @@
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "nodemon": "^3.0.1",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
