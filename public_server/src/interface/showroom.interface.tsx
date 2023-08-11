@@ -1,17 +1,23 @@
-interface IVideo {
+export interface IShowroom {
     userId: string;
     youtubeTitle: string;
-    clips: IClip[];
+    fileName: string;
+
+    clips: IClip[]; // idx is identifier for the detected product
+    screenshot: IScreenshot[];
+    data: IClipDataJson[];
 }
 
-interface IClip {  
+export interface IClip {  
     id: string;
-    clipurl: string;
-    imageUrl: string;
-    result: IClipResultJson;
+    src: string;
 }
 
-interface IClipResultJson {
+export interface IScreenshot {
+    id: string;  
+    src: string;
+}
+export interface IClipDataJson {
     id: string;
     startX: number;
     startY: number;
@@ -23,10 +29,4 @@ interface IClipResultJson {
     productName: string;
     productUrl: string;
     // duration: string;
-}
-
-export {
-    IVideo,
-    IClip,
-    IClipResultJson
 }

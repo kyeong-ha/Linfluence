@@ -1,6 +1,6 @@
-import { IClip } from "../interface/showroom.interface";
+import type { IShowroom, IClip, IClipDataJson, IScreenshot } from "../interface/showroom.interface";
 
-class HttpResp {
+export class HttpResp {
     private code: string;
     private message: string;
     private data: RespData | null = null;
@@ -23,24 +23,42 @@ class HttpResp {
     }
 }
 
-class RespData {
+export class RespData {
     private userId: string = '';
     private youtubeTitle: string = '';
-    private clips: IClip[] | null = null;;
+    private fileName: string = '';
 
-    constructor (userId: string) {
+    private clips: IClip[] | null = null;
+    private screenshot: IScreenshot[] | null = null;
+    private data: IClipDataJson[] | null = null;
+    
+    constructor (userId: string, youtubeTitle: string, fileName: string) {
         this.userId = userId;
+        this.youtubeTitle = youtubeTitle;
+        this.fileName = fileName;
     }
 
     public setUserId = (userId: string): void => {
         this.userId = userId;
     }
 
-    public setTitle = (youtubeTitle: string): void => {
+    public setYoutubeTitle = (youtubeTitle: string): void => {
         this.youtubeTitle = youtubeTitle;
     }
-
+    
+    public getFileName = (fileName: string): void => {
+        this.fileName = fileName;
+    }
+    
     public setClips = (clips: IClip[]): void => {
         this.clips = clips;
+    }
+
+    public setScreenshot = (screenshot: IScreenshot[]): void => {
+        this.screenshot = screenshot;
+    }
+    
+    public setData = (data: IClipDataJson[]): void => {
+        this.data = data;
     }
 }
