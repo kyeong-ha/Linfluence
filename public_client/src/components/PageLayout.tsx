@@ -1,13 +1,15 @@
-// import { ReactNode } from 'react';
-// import Header from './headers/Header';
+import { ReactNode } from 'react';
+import { Desktop, Mobile } from "./MediaQuery";
 
-// export default function PageLayout({ children }: { children: ReactNode }) {
-//     return (
-//         <div>
-//             <Header />
-//             <main>
-//                 {props.children}
-//             </main>
-//         </div>
-//     );
-// }
+export default function PageLayout({ children }: { children: ReactNode[] }) {
+    return (
+        <main>
+            <Desktop>
+                {children[0]}
+            </Desktop>
+            <Mobile>
+                {children[1]}
+            </Mobile>
+        </main>
+    );
+}
