@@ -14,13 +14,17 @@ module.exports = {
             use: ["babel-loader", "ts-loader"],
         },
         {
-            test: /\.(png|jpe?g|gif)$/,
+            test: /\.(png|jpe?g|gif|mp4)$/,
             use: [
             {
                 loader: "file-loader",
             },
             ],
         },
+        {
+            test: /\.s?css$/,
+            use: ["style-loader", "css-loader", "sass-loader"],
+        }
         ],
     },
     output: {

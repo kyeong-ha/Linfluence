@@ -1,9 +1,10 @@
-import * as React from 'react';
-import Counter from './pages/MainPage';
-
+import React from 'react';
+import { MainMobile } from './pages/main/MainMobile';
+// import { MainDesktop } from './pages/MainPage/MainDesktop';
+// import { MainTablet } from './pages/MainPage/MainTablet';
 class App extends React.Component {
     public render() {
-        return <Counter startNumber={5} />;
+        return <MainMobile />;
     }
 }
 
