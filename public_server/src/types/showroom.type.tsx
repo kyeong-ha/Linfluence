@@ -3,19 +3,19 @@ export interface IShowroom {
     youtubeTitle: string;
     fileName: string;
 
-    clips: IClip[]; // idx is identifier for the detected product
+    clips: IClip[]; // id is identifier for the detected product
     screenshot: IScreenshot[];
     data: IClipDataJson[];
 }
 
 export interface IClip {  
     id: string;
-    src: string;
+    clipUrl: string;
 }
 
 export interface IScreenshot {
     id: string;  
-    src: string;
+    screenshotUrl: string;
 }
 export interface IClipDataJson {
     id: string;

@@ -1,5 +1,5 @@
-import { HttpResp, RespData } from "../entity/httpresp.entity";
-import type { IShowroom } from "../interface/showroom.interface";
+import { HttpResp, RespData } from "../utils/showroom.util";
+import type { IShowroom } from "../types/showroom.type";
 
 /** AWS S3에 GET 방식의 request을 보내 Showroom data(json)을 가져오는 함수 */
 const ClipApiService = () => {

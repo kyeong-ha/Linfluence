@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import * as dotenv from 'dotenv';
 import path from "path";
-import ClipApiController from './api/clipApi.controller';
+import ClipApiController from './api/showroom.controller';
 
 dotenv.config();
 const app = express();
