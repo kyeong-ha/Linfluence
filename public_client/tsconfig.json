@@ -6,17 +6,23 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "sourceMap": true,
+    "rootDir": "./src",
     "outDir": "./dist",
     "isolatedModules": true,
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
     "paths": {
+      "@assets/*": ["assets/*"],
+      "@auth/*": ["auth/*"],
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"]
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   }
 }
