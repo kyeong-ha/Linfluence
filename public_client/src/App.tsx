@@ -1,29 +1,10 @@
-// import React from "react";
+import * as React from 'react';
+import Counter from './pages/MainPage';
 
-// const App = () => {
-//     return (
-//         <>
-//             <div>Init Page</div>
-//         </>
-//     );
-// };
-// export default App;
-
-
-import React, { useEffect } from 'react';
-import axios from 'axios';
-// import './App.css';
-
-function App() {
-    const callApi = async () => {
-        axios.get("/api").then((res) => console.log(res.data.test));
+class App extends React.Component {
+    public render() {
+        return <Counter startNumber={5} />;
     }
-
-    useEffect(() => {
-        callApi();
-    }, []);
-
-    return <div>테스트</div>
 }
 
 export default App;

@@ -1,5 +1,6 @@
 // 개발 모드: 개발자들이 좀 더 보기 편하게 웹팩 로그나 결과물이 보여진다
 
+const Dotenv = require('dotenv-webpack');
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
@@ -11,4 +12,5 @@ module.exports = merge(common, {
         port: 3000,
         hot: true,
     },
+    plugins: [new Dotenv()],
 });
