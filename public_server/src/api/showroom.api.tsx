@@ -1,4 +1,4 @@
-import { HttpResp, RespData } from "../utils/showroom.util";
+import { HttpResp, Showroom } from "../utils/showroom.util";
 import type { IShowroom } from "../types/showroom.type";
 
 /** AWS S3에 GET 방식의 request을 보내 Showroom data(json)을 가져오는 함수 */
@@ -13,7 +13,7 @@ const ClipApiService = () => {
             request.get(apiUrl, 
                 (error: object, response: object, body: IShowroom) => {
                 const httpResp: HttpResp = new HttpResp();
-                const respData: RespData = new RespData(userId, youtubeTitle, fileName);
+                const showroom: Showroom = new Showroom(userId, youtubeTitle, fileName);
 
                 if (body) {
                     console.log(response)
@@ -23,7 +23,7 @@ const ClipApiService = () => {
         
                     httpResp.setCode('00');
                     httpResp.setMessage('Success');
-                    httpResp.setData(respData);
+                    httpResp.setData(showroom);
                 } else {
                     httpResp.setCode('99');
                     httpResp.setMessage('Failed');
@@ -39,7 +39,4 @@ const ClipApiService = () => {
 };
 
 
-class test {
-
-}
 export default ClipApiService;

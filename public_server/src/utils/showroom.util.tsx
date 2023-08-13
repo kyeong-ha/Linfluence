@@ -1,7 +1,8 @@
+import { IClip, IScreenshot, IClipDataJson } from "../types/showroom.type";
 export class HttpResp {
     private code: string;
     private message: string;
-    private data: RespData | null = null;
+    private data: Showroom | null = null;
 
     constructor (code: string = '00', message: string = 'Success') {
         this.code = code;
@@ -16,15 +17,15 @@ export class HttpResp {
         this.message = message;
     }
 
-    public setData = (data: RespData | null): void => {
+    public setData = (data: Showroom | null): void => {
         this.data = data;
     }
 }
 
 export class Showroom {
-    private userId: string = '';
-    private youtubeTitle: string = '';
-    private fileName: string = '';
+    private userId: string;
+    private youtubeTitle: string;
+    private fileName: string;
 
     private clips: IClip[] | null = null;
     private screenshot: IScreenshot[] | null = null;
@@ -70,7 +71,7 @@ export class Clip {
         this.clipUrl = clipUrl;
     }
 
-    public src = (clipUrl: string): void => {
+    public src = (clipUrl: string): string => {
         return this.clipUrl;
     }
 }
@@ -84,26 +85,27 @@ export class Screenshot {
         this.screenshotUrl = screenshotUrl;
     }
 
-    public src = (screenshotUrl: string): void => {
+    public src = (screenshotUrl: string): string => {
         return this.screenshotUrl;
     }
 }
 
 export class Data {
     private id: string = '';
-    private startX: number = 0;
-    private startY: number = 0;
-    private endX: number = 0;
-    private endY: number = 0;
-    /** Unit of second */
+    // private startX: number = 0;
+    // private startY: number = 0;
+    // private endX: number = 0;
+    // private endY: number = 0;
     private captureTime: number = 0;
     private youtubeUrl: string = '';
     private productName: string = '';
     private productUrl: string = '';
-    // duration: string;
 
-    constructor (Data: object) {
-        for (let key in Data) 
-            this.data[key] = Data[key];
+    constructor (data: Data) {
+        this.id = data.id;
+        this.captureTime = data.captureTime;
+        this.youtubeUrl = data.youtubeUrl;
+        this.productName = data.productName;
+        this.productUrl = data.productUrl;
     }
 }

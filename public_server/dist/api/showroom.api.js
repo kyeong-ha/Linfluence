@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const httpresp_entity_1 = require("../entity/httpresp.entity");
+const showroom_util_1 = require("../utils/showroom.util");
 /** AWS S3에 GET 방식의 request을 보내 Showroom data(json)을 가져오는 함수 */
 const ClipApiService = () => {
     const request = require('request');
     const S3 = (userId, youtubeTitle, fileName) => __awaiter(void 0, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             const apiUrl = `https://taewons3.s3.ap-northeast-2.amazonaws.com/${userId}/${youtubeTitle}/${fileName}`;
-            request.get(apiUrl, (err, response) => {
-                const httpResp = new httpresp_entity_1.HttpResp();
-                const respData = new httpresp_entity_1.RespData(userId, youtubeTitle, fileName);
+            request.get(apiUrl, (error, response, body) => {
+                const httpResp = new showroom_util_1.HttpResp();
+                const showroom = new showroom_util_1.Showroom(userId, youtubeTitle, fileName);
                 if (body) {
                     console.log(response);
                     // respData.setClips(body.clips);
@@ -26,7 +26,7 @@ const ClipApiService = () => {
                     // respData.setData(body.data);
                     httpResp.setCode('00');
                     httpResp.setMessage('Success');
-                    httpResp.setData(respData);
+                    httpResp.setData(showroom);
                 }
                 else {
                     httpResp.setCode('99');
@@ -39,7 +39,5 @@ const ClipApiService = () => {
     });
     return { S3 };
 };
-class test {
-}
 exports.default = ClipApiService;
-//# sourceMappingURL=clipApi.service.js.map
+//# sourceMappingURL=showroom.api.js.map
