@@ -9,7 +9,7 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/:userId" element={<InfluencerPage />} />
+            <Route path="/:name" element={<InfluencerPage />} />
         </Routes>
     );
 }
