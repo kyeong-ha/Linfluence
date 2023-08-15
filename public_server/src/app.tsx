@@ -1,32 +1,34 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import * as dotenv from 'dotenv';
 import path from "path";
-import sequelzie from "./db/models/index";
-import ClipApiController from './api/showroom.controller';
 
-// dotenv.config();
+import { AppDataSource } from "./data-source";
+// import sequelzie from "./db/models/index";
+// import ClipApiController from './api/showroom.controller';
+
+dotenv.config();
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
-app.use(express.static(path.join(__dirname, '../public')));
-app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+// app.use(express.static(path.join(__dirname, '../public')));
+// app.get('/', (req: Request, res: Response) => {
+//     res.sendFile(path.join(__dirname, '../public/index.html'));
+// });
 
-// app.use('/s3', ClipApiController);
 
-app.listen(PORT, async () => {
+// app.listen(PORT, async () => {
+//     console.log(`Server started: http://localhost:${PORT}`);
+// });
 
-    console.log(`Server started: http://localhost:${PORT}`);
+AppDataSource.initialize().then(async () => {
+    // create express app
+    const app = express();
+    app.use(express.json()); 
+    app.use(express.urlencoded({ extended: true }));
 
-    await sequelzie.authenticate()
-    .then(async () => {
-        console.log('Authentication successful');
-    })
-    .catch(e => {
-        console.log(e)
-    });
+    // run app
+    app.listen(PORT);
 
-});
+}).catch(error => console.log(error))
 
 export default app;
