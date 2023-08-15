@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
-
+import { YoutubeVideo } from "./Influencers";
 //? Entity: DB table을 정의하기 전에 실행해야 하는 데코레이터
 //? Entity는 클래스명에 매핑되므로, 테이블명의 지정은 option이다
 
@@ -17,18 +17,22 @@ export class Clip extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
     
-    /** 클립의 파일명(mp4 || gif) */
+    /** 클립의 파일명 */
     @Column()
-    fileName: string;
+    clipName: string;
 
+    /** 클립의 S3 링크(mp4 || gif) */
     @Column()
-    fileUrl: string;
+    clipUrl: string;
 
     /** 1:M 관계로,
      * Clip은 여러개의 Product을 가질 수 있고, Product는 1개의 Clip에 연결되어 있다
      */
     @OneToMany((type) => Product, (product) => product.clip)
     products: Product[];
+
+    @ManyToOne((type) => YoutubeVideo, (youtubeVideo) => youtubeVideo.clips)
+    youtubeVideo: YoutubeVideo;
 }
 
 @Entity()

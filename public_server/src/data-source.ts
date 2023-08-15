@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Clip, Product } from './entity/Clips';
+import { YoutubeVideo, Influencer, SnsLinks } from './entity/Influencers';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "somes",
     database: "test",
-    entities: [ Clip, Product ],
+    entities: [ Clip, Product, YoutubeVideo, Influencer, SnsLinks ],
     synchronize: true,
     logging: true,
     migrations: [],
