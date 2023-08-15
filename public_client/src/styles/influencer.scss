@@ -1,18 +1,32 @@
-.main-header{
+.profile-header{
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 80px;
-    background-color: #dde0ea;
+    width: 100vw;
+    height: 600px;
+    background-color: #b6bbc8; // ** need to handling a background-img
+    *{
+        margin: 5.2%;
+    }
 }
 
-.contents {
-    display: flex;
-    width: 96%;
-    max-width: 1100px;
-    height: 100%;
+.profile-contents {
+    width: 100%;
+    height: 53%;
     margin: 0 auto;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
+    background-color:#dde0ea;
+}
+
+.profile-img{
+    position: absolute;
+    width: 23vh;
+    height: 23vh;
+    top: 26%;
+    left: 25%;
+    margin: auto 0;
+    background-color:#bbc0cf;
 }

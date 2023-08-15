@@ -1,23 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ProfileMobile } from "./mobile/influencer.profile.mobile";
-// {
-//   "name": "BilliRecords",
-//   "youtubeVideos": {
-//       "clips": {
-//           "clipName": "누워서 듣기 좋은 편안하고 산뜻한 R&B 1시간 | Lazy",
-//           "clipUrl": "https://taewons3.s3.ap-northeast-2.amazonaws.com/taewon/hyungang/1-frame.png",
-//           "products": {
-//               "imageUrl": "https://taewons3.s3.ap-northeast-2.amazonaws.com/taewon/hyungang/1.png",
-//               "infoJson": "https://taewons3.s3.ap-northeast-2.amazonaws.com/taewon/hyungang/1-result.json"
-//           }
-//       }
-//   },
-//   "snsLinks": {
-//       "naverBlog": "blog.naver.com",
-//       "instagram": "instagram.com",
-//       "facebook": "facebook.com"
-//   }
-// }
+
 interface Influencer {
   name: string;
   youtubeVideos: {
