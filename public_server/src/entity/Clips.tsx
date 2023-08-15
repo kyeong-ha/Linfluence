@@ -11,6 +11,25 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMan
 // }, 
 // ...
 
+@Entity()
+export class Clip extends BaseEntity { 
+    /** Primary key column & auto increase */
+    @PrimaryGeneratedColumn()
+    id: number;
+    
+    /** 클립의 파일명(mp4 || gif) */
+    @Column()
+    fileName: string;
+
+    @Column()
+    fileUrl: string;
+
+    /** 1:M 관계로,
+     * Clip은 여러개의 Product을 가질 수 있고, Product는 1개의 Clip에 연결되어 있다
+     */
+    @OneToMany((type) => Product, (product) => product.clip)
+    products: Product[];
+}
 
 @Entity()
 export class Product {
@@ -26,20 +45,4 @@ export class Product {
 
     @ManyToOne((type) => Clip, (clip) => clip.products)
     clip: Clip;
-}
-@Entity()
-export class Clip extends BaseEntity { 
-    /** Primary key column & auto increase */
-    @PrimaryGeneratedColumn()
-    id: number;
-    
-    /** 클립의 파일명(mp4 || gif) */
-    @Column()
-    fileName: string;
-
-    /** 1:M 관계로,
-     * Clip은 여러개의 Product을 가질 수 있고, Product는 1개의 Clip에 연결되어 있다
-     */
-    @OneToMany((type) => Product, (product) => product.clip)
-    products: Product[];
 }

@@ -6,7 +6,7 @@
     "password": "somes",
     "database": "test",
     "entities": [
-        "src/entity/*.ts"
+        "entity/*.tsx"
     ],
     "synchronize": true
 }
