@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-
+import { ProfileMobile } from "./mobile/influencer.profile.mobile";
 // {
 //   "name": "BilliRecords",
 //   "youtubeVideos": {
@@ -97,16 +97,7 @@ export default function InfluencerMobile(){
 
   if (data.name == name) {
     let profile = data;
-    return(
-      <div>
-        <h1>User Profile</h1>
-        <div>
-          <h2>{profile.name}</h2>
-          <p>짤url: {profile.youtubeVideos.clips.clipName}</p>
-          <p>전체캡쳐url: {profile.youtubeVideos.clips.clipName}</p>
-        </div>
-      </div>
-    )
+    return ProfileMobile();
   }else {
     return ( 
       <div>

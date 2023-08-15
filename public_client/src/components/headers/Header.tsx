@@ -2,7 +2,7 @@ import '../../styles/header.scss';
 
 export default function Header() {
     return (
-        <header>
+        <header className='main-header'>
             <div className='contents'>
                 <div>로고</div>
                 <div>검색바</div>

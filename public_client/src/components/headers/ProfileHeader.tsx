@@ -1,13 +1,13 @@
-import '../../styles/profile_header.scss';
-
-export default function Header() {
+export default function ProfileHeader() {
     return (
         <header>
             <div className='contents'>
-                <div>로고</div>
-                <div>검색바</div>
-                <div>아이콘1</div>
-                <div>아이콘2</div>
+                <div>뒤로가기</div>
+                <div>배경프로필사진</div>
+                <div>프로필사진</div>
+                <div>인플루언서 이름</div>
+                <div>소개글</div>
+                <div>하단 nav</div>
             </div>
         </header>
     )
