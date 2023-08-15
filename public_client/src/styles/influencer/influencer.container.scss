@@ -1,0 +1,32 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.post-list{
+    top: 60vh;
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.post{
+    position: relative;
+    width: 90%;
+    height: 60vw;
+    margin: 5% 5% 0% 5%;
+    z-index: -999;
+    background-color: #dadfeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    *{
+        margin: 3%;
+    }
+}
