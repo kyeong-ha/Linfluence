@@ -6,7 +6,7 @@
     left: 0;
     top: 0;
     width: 100vw;
-    height: 60vh;
+    height: 56vh;
     background-color: #b6bbc8; // ** need to handling a background-img
     *{
         margin: 4.5%;
@@ -24,7 +24,7 @@
 
     .profile-contents {
         position: relative;
-        height: calc(100% - 23.3vw);
+        height: calc(100% - 21vw);
         margin: 0;
         h2{
             margin-bottom: 3.5%;
@@ -42,8 +42,8 @@
     align-items: center;
     .profile-img{
         // position: absolute;
-        width: 46vw;
-        height: 46vw;
+        width: 42vw;
+        height: 42vw;
         top: 50%;
         left: 50%;
         margin: auto 0;

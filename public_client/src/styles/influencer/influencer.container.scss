@@ -1,11 +1,11 @@
 .container{
-    width: 100vw;
+    width: 100vw; // common style with main container
     height: 100vh;
     position: relative;
 }
 
 .post-list{
-    top: 60vh;
+    top: 56vh; // common style with main container without 'top'
     width: 100vw;
     height: auto;
     position: absolute;
