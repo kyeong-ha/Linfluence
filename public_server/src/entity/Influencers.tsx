@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { Clip, Product } from './Clips';
 
-//   influencer: {
+// influencer: {
 //       [
 //           videoId: {
 //               youTubeTitle = "동영상 이름";
