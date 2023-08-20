@@ -25,6 +25,17 @@ AppDataSource.initialize().then(async () => {
     //     res.send(results);
     // });
 
+    app.get("/:influencer", (req: Request, res: Response) => {
+        var sql: string = "select * from test where Influencer=" + req.params.influencer.name;
+        conn.query(sql, (err: error, result: result) => {
+            if (err) console.log("query is not excuted: " + err);
+            else {
+                console.log(result.body);
+                res.send(result);
+            }
+        });
+    });
+
     app.post('/api/influ', (req: Request, res: Response) => {
         const influ = AppDataSource.getRepository(Influencer).create(req.body)
         
@@ -48,3 +59,6 @@ AppDataSource.initialize().then(async () => {
 }).catch(error => console.log(error))
 
 // export default app;
+
+
+// :/influencer => import the influencer from MySQL
