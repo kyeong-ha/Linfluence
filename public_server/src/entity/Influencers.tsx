@@ -31,12 +31,9 @@ import { Clip, Product } from './Clips';
 // }
 @Entity()
 export class Influencer extends BaseEntity { 
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column()
+    @PrimaryGeneratedColumn('uuid')
     name: string;
-    
+
     @OneToMany((type) => YoutubeVideo, (youtubeVideo) => youtubeVideo.influencer)
     youtubeVideos: YoutubeVideo[];
 

@@ -8,7 +8,7 @@ import { YoutubeVideo, Influencer, SnsLinks } from './entity/Influencers';
 
 dotenv.config();
 // const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
 AppDataSource.initialize().then(async () => {
     // create express app
@@ -25,15 +25,23 @@ AppDataSource.initialize().then(async () => {
     //     res.send(results);
     // });
 
-    app.get("/:influencer", (req: Request, res: Response) => {
-        var sql: string = "select * from test where Influencer=" + req.params.influencer.name;
-        conn.query(sql, (err: error, result: result) => {
-            if (err) console.log("query is not excuted: " + err);
-            else {
-                console.log(result.body);
-                res.send(result);
-            }
+    app.get("/influencer", (req: Request, res: Response) => {
+        // return clip by id
+        console.log(req.params.name)
+        const results = AppDataSource.getRepository(Influencer).findOneBy({
+            name: req.params.name
         });
+
+        console.log(results);
+        return res.send(results)
+        // var sql: string = "select * from test where Influencer=" + req.params.influencer.name;
+        // conn.query(sql, (err: error, result: result) => {
+        //     if (err) console.log("query is not excuted: " + err);
+        //     else {
+        //         console.log(result.body);
+        //         res.send(result);
+        //     }
+        // });
     });
 
     app.post('/api/influ', (req: Request, res: Response) => {
@@ -51,7 +59,6 @@ AppDataSource.initialize().then(async () => {
         const results = AppDataSource.getRepository(Influencer).save(influ)
         res.send(results);
     });
-
 
     // run app
     app.listen(PORT);

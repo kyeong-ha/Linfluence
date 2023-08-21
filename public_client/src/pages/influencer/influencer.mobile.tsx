@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+
 import { ProfileMobile } from "./mobile/influencer.profile.mobile";
 
 interface Influencer {
@@ -77,16 +78,18 @@ const data: Influencer = {
 
 export default function InfluencerMobile(){
   const { name } = useParams<{ name: string }>();
-
-  if (data.name == name) {
-    let profile = data;
+  if(typeof(name) != 'undefined')
     return ProfileMobile();
-  }else {
-    return ( 
-      <div>
-        <h1>User Profile</h1>
-        <p>존재하지 않는 프로필 입니다.</p>
-      </div>
-    );
-  }
+  // if (data.name == name) {
+  //   let profile = data;
+  //   return ProfileMobile(name);
+  // }else {
+  //   return ( 
+      
+  //     <div>
+  //       <h1>User Profile</h1>
+  //       <p>존재하지 않는 프로필 입니다.</p>
+  //     </div>
+  //   );
+  // }
 }
