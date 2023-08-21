@@ -25,7 +25,7 @@ AppDataSource.initialize().then(async () => {
     //     res.send(results);
     // });
 
-    app.get("/influencer", (req: Request, res: Response) => {
+    app.get("/influencer/:name", (req: Request, res: Response) => {
         // return clip by id
         console.log(req.params.name)
         const results = AppDataSource.getRepository(Influencer).findOneBy({
@@ -45,16 +45,21 @@ AppDataSource.initialize().then(async () => {
     });
 
     app.post('/api/influ', (req: Request, res: Response) => {
-        const influ = AppDataSource.getRepository(Influencer).create(req.body)
-        
+        // const product = AppDataSource.getRepository(Product).create(req.body.youtubeVideos.clips.products)
+        // AppDataSource.getRepository(Product).save(product)
+        // const clip = AppDataSource.getRepository(Clip).create(        )
+        // AppDataSource.getRepository(Clip).save(clip)
+
         const youtubeVideo = AppDataSource.getRepository(YoutubeVideo).create(req.body.youtubeVideos)
         AppDataSource.getRepository(YoutubeVideo).save(youtubeVideo)
-        const clip = AppDataSource.getRepository(Clip).create(req.body.youtubeVideos.clips)
-        AppDataSource.getRepository(Clip).save(clip)
-        const product = AppDataSource.getRepository(Product).create(req.body.youtubeVideos.clips.products)
-        AppDataSource.getRepository(Product).save(product)
         const snsLink = AppDataSource.getRepository(SnsLinks).create(req.body.snsLinks)
         AppDataSource.getRepository(SnsLinks).save(snsLink)
+
+        const influ = AppDataSource.getRepository(Influencer).create({
+            name: req.body.name,
+            youtubeVideos: req.body.youtubeVideos,
+            snsLinks: req.body.snsLinks
+        })
 
         const results = AppDataSource.getRepository(Influencer).save(influ)
         res.send(results);

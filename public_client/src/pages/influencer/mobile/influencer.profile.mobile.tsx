@@ -12,7 +12,7 @@ export function ProfileMobile(){
     const { name } = useParams<{ name: string }>();
 
     const callApi = async () => {
-        axios.get("/influencer", { params: {name: name} }).then((res) => console.log(res.data));
+        axios.get(`/influencer/${name}`).then((res) => console.log(res.data));
     }
 
     useEffect(() => {
