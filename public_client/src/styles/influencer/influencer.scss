@@ -1,4 +1,12 @@
+h2{
+    font-size: 1.2em;
+}
+p{
+    font-size: 0.9em;
+}
 .profile-header{
+    white-space: pre-line;
+    
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -22,13 +30,15 @@
     text-align: center;
     background-color:#dde0ea;
 
+    *{ margin: 0 3%; }
     .profile-contents {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
         position: relative;
-        height: calc(100% - 21vw);
+        height: calc(100% - 22vw);
         margin: 0;
-        h2{
-            margin-bottom: 3.5%;
-        }
     }
 }
 
@@ -63,9 +73,9 @@
     }
 }
 
-.wrapper{
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    bottom: 0;
-}
+// .wrapper{
+//     position: absolute;
+//     width: 100%;
+//     margin: 0;
+//     bottom: 0;
+// }

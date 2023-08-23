@@ -1,6 +1,37 @@
 import '../../styles/influencer/influencer.scss';
 
+import  React from 'react';
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 export default function ProfileHeader() {
+    const { id } = useParams<{ id: string }>();
+    const [influecner, setInflunecer] = React.useState({
+        id: '',
+        name: '',
+        bio: '',
+        createdAt: '',
+        updatedAt: '',
+    });
+
+    async function getInfluencer() {
+        await axios.get(`/influencer/${id}`)
+        .then((res) => setInflunecer((prevState) => {
+            return { 
+                ...prevState,
+                id: res.data.id,
+                name: res.data.name,
+                bio: res.data.bio,
+                createdAt: res.data.createdAt,
+                updatedAt: res.data.updatedAt
+            }
+        }));
+    }
+
+    React.useEffect(() => {
+        getInfluencer();
+    }, []);
+
     return (
         <header className='profile-header'>
             <div className='back-icon'>뒤로가기</div>
@@ -10,8 +41,8 @@ export default function ProfileHeader() {
             </div>
             <div className='profile-contents-wrap'>
                 <div className='profile-contents'>
-                    <h2>인플루언서 이름</h2>
-                    <p>소개글</p>
+                    <h2>{influecner.name}</h2>
+                    <p>{influecner.bio}</p>
                     <div className='profile-nav wrapper'>
                         <div className='nav-button'>
                             <span>게시물</span>

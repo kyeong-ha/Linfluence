@@ -77,8 +77,8 @@ const data: Influencer = {
 }
 
 export default function InfluencerMobile(){
-  const { name } = useParams<{ name: string }>();
-  if(typeof(name) != 'undefined')
+  const { id } = useParams<{ id: string }>();
+  if(typeof(id) != 'undefined')
     return ProfileMobile();
   // if (data.name == name) {
   //   let profile = data;

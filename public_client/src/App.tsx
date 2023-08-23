@@ -7,7 +7,7 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/:name" element={<InfluencerPage />} />
+            <Route path="/:id" element={<InfluencerPage />} />
         </Routes>
     );
 }

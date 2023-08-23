@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Influencer : Post = 1 : N
+// Influencer : SNS = 1 : 1
+// Post : Clip = 1 : N
+// Clip : Product = 1 : N
+
+model Influencer {
+  id              String        @id @default(uuid())
+  name            String        @default("")
+  bio             String        @default("")
+  posts           Post[]
+  snsList         SNS?     
+
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt
+}
+
+model SNS {
+  id              Int           @id @default(autoincrement())
+  naverBlog       String        @default("undefined")
+  instagram       String        @default("undefined")
+  facebook        String        @default("undefined")
+
+  influencer      Influencer    @relation(fields: [influencerId], references: [id])
+  influencerId    String        @unique
+}
+
+model Post {
+  title           String        @id @default(uuid())
+  clips           Clip[]
+
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  influencer      Influencer    @relation(fields: [influencerId], references: [id])
+  influencerId    String        @default("")
+}
+
+model Clip {
+  id              Int           @id @default(autoincrement())
+  clipUrl         String        @default("undefined")
+  products        Product[]
+
+  post            Post          @relation(fields: [postTitle], references: [title])
+  postTitle       String        @default("")
+}
+
+model Product {
+  id        Int    @id @default(autoincrement())
+  imageUrl  String @default("undefined")
+  infoJson  String @default("undefined")
+
+  clip              Clip  @relation(fields: [clipId], references: [id])
+  clipId            Int
+}
