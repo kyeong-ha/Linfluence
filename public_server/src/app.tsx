@@ -56,10 +56,11 @@ app.get('/influencer/:id', async (req: Request, res: Response) => {
 // Create Post
 app.post('/:id/post/create', async (req: Request, res: Response) => {
     try {
-        const data = req.body;
-        const res = await prisma.post.create({
-            data
-        });
+        const data = {
+            ...req.body,
+            influencerId: req.params.id,
+        };
+        const res = await prisma.post.create({ data });
     
         console.log("Created a post sucessfully", res);
     } catch (err) {
@@ -91,13 +92,13 @@ app.get('/:id/post', async (req: Request, res: Response) => {
 });
 
 // Create Clip
-app.post('/:id/clip/create', async (req: Request, res: Response) => {
+app.post('/:id/:postId/clip/create', async (req: Request, res: Response) => {
     try {
-        const data = req.body;
-        await prisma.post.createMany({
-            data,
-            skipDuplicates:true
-        });
+        const data = {
+            ...req.body,
+            postId: req.params.postId,
+        }
+        const res = await prisma.clip.create({ data });
     
         console.log("Created a post sucessfully", res);
     } catch (err) {
