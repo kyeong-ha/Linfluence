@@ -7,7 +7,7 @@ const router: Router = express.Router();
 
 
 // Create a new 'Post'
-router.post('/post', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         const data = req.body;
         const post = await prisma.post.create({ data });
@@ -19,7 +19,7 @@ router.post('/post', async (req: Request, res: Response) => {
 
 
 // Read a 'Single Post' by id
-router.get('/post/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
     try {
         const post = await prisma.post.findUnique({
             where: { id: req.params.id }
@@ -31,7 +31,7 @@ router.get('/post/:id', async (req: Request, res: Response) => {
 
 
 // Update a 'Single Post' by id
-router.put('/post/:id', async (req: Request, res: Response) => {
+router.put('/:id', async (req: Request, res: Response) => {
     try {
         const post = await prisma.post.update({
             where: { id: req.params.id },
@@ -44,7 +44,7 @@ router.put('/post/:id', async (req: Request, res: Response) => {
 
 
 // Delete a 'Single Post' by id
-router.delete('/post/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const post = await prisma.post.delete({
             where: { id: req.params.id },

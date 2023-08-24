@@ -7,7 +7,7 @@ const router: Router = express.Router();
 
 
 // Create a new 'Influencer'
-router.post('/influencer', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         const data = req.body;
         const influecner = await prisma.influencer.create({ data });
@@ -19,7 +19,7 @@ router.post('/influencer', async (req: Request, res: Response) => {
 
 
 // Read a 'Single Influencer' by id
-router.get('/influencer/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
     try {
         const influencer = await prisma.influencer.findUnique({
             where: { id: req.params.id }
@@ -31,7 +31,7 @@ router.get('/influencer/:id', async (req: Request, res: Response) => {
 
 
 // Update a 'Single Influencer' by id
-router.put('/influencer/:id', async (req: Request, res: Response) => {
+router.put('/:id', async (req: Request, res: Response) => {
     try {
         const influencer = await prisma.influencer.update({
             where: { id: req.params.id },
@@ -44,7 +44,7 @@ router.put('/influencer/:id', async (req: Request, res: Response) => {
 
 
 // Delete a 'Single Influencer' by id
-router.delete('/influencer/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const influencer = await prisma.influencer.delete({
             where: { id: req.params.id },

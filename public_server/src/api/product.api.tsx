@@ -7,7 +7,7 @@ const router: Router = express.Router();
 
 
 // Create a new 'Product'
-router.product('/product', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         const data = req.body;
         const product = await prisma.product.create({ data });
@@ -19,7 +19,7 @@ router.product('/product', async (req: Request, res: Response) => {
 
 
 // Read a 'Single Product' by id
-router.get('/product/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
     try {
         const product = await prisma.product.findUnique({
             where: { id: req.params.id }
@@ -31,7 +31,7 @@ router.get('/product/:id', async (req: Request, res: Response) => {
 
 
 // Update a 'Single Product' by id
-router.put('/product/:id', async (req: Request, res: Response) => {
+router.put('/:id', async (req: Request, res: Response) => {
     try {
         const product = await prisma.product.update({
             where: { id: req.params.id },
@@ -44,7 +44,7 @@ router.put('/product/:id', async (req: Request, res: Response) => {
 
 
 // Delete a 'Single Product' by id
-router.delete('/product/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const product = await prisma.product.delete({
             where: { id: req.params.id },

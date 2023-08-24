@@ -7,7 +7,7 @@ const router: Router = express.Router();
 
 
 // Create a new 'Clip'
-router.clip('/clip', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         const data = req.body;
         const clip = await prisma.clip.create({ data });
@@ -19,7 +19,7 @@ router.clip('/clip', async (req: Request, res: Response) => {
 
 
 // Read a 'Single Clip' by id
-router.get('/clip/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
     try {
         const clip = await prisma.clip.findUnique({
             where: { id: req.params.id }
@@ -31,7 +31,7 @@ router.get('/clip/:id', async (req: Request, res: Response) => {
 
 
 // Update a 'Single Clip' by id
-router.put('/clip/:id', async (req: Request, res: Response) => {
+router.put('/:id', async (req: Request, res: Response) => {
     try {
         const clip = await prisma.clip.update({
             where: { id: req.params.id },
@@ -44,7 +44,7 @@ router.put('/clip/:id', async (req: Request, res: Response) => {
 
 
 // Delete a 'Single Clip' by id
-router.delete('/clip/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const clip = await prisma.clip.delete({
             where: { id: req.params.id },
