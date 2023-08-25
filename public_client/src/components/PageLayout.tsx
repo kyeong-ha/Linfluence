@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Desktop, Mobile } from "./MediaQuery";
+import { Desktop, Mobile } from "../utils/MediaQuery";
 
 export default function PageLayout({ children }: { children: ReactNode[] }) {
     return (

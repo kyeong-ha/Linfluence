@@ -1,8 +1,7 @@
-import '../../styles/influencer/influencer.scss';
-
 import  React from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import '@styles/influencer/influencer.scss';
 
 export default function ProfileHeader() {
     const { id } = useParams<{ id: string }>();
@@ -15,7 +14,7 @@ export default function ProfileHeader() {
     });
 
     async function getInfluencer() {
-        await axios.get(`/influencer/${id}`)
+        await axios.get(`/api/influencer/${id}`)
         .then((res) => setInflunecer((prevState) => {
             return { 
                 ...prevState,

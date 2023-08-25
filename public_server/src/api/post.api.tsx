@@ -17,6 +17,19 @@ router.post('/', async (req: Request, res: Response) => {
     } catch(err) { res.status(StatusCode.SERVICE_UNAVAILABLE).json(err); }
 });
 
+// Read a 'All Post' of Inflencer by id
+router.get('/', async (req: Request, res: Response) => {
+    try {
+        const post = await prisma.post.findMany({
+            where: { influencerId: req.query.influencerId },
+            orderBy: {
+                createdAt: 'desc',
+            }
+        });
+        res.status(StatusCode.OK).send(post);
+
+    } catch(err) { res.status(StatusCode.DB_ERROR).json(err); }
+});
 
 // Read a 'Single Post' by id
 router.get('/:id', async (req: Request, res: Response) => {

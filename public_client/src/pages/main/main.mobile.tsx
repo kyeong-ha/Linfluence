@@ -1,5 +1,5 @@
-import colors from '../../_lib/colors';
-import Header from '../../components/headers/Header';
+import colors from '../../types/constants/colors';
+import Header from '../../components/Headers/Header';
 import '../../styles/main/main.container.scss'
 import React from 'react';
 import { Link } from 'react-router-dom';

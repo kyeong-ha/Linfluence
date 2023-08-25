@@ -1,4 +1,4 @@
-import PageLayout from '../components/PageLayout';
+import PageLayout from '@components/PageLayout';
 import DesktopPage from "./influencer/influencer.desktop";
 import MobilePage from "./influencer/influencer.mobile";
 

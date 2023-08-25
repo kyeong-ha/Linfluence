@@ -12,7 +12,7 @@ module.exports = merge(common, {
         port: 3000,
         hot: true,
         proxy: {
-            '/influencer':
+            '/api':
             {
                 target: 'http://localhost:5002',
                 changeOrigin: true,
