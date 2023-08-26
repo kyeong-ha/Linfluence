@@ -2,39 +2,20 @@ import ProfileHeader from '@components/Headers/ProfileHeader';
 import '@styles/influencer/influencer.container.scss';
 
 import  React from 'react';
-import { useParams } from "react-router-dom";
-
-import { Link } from 'react-router-dom';
-import axios from "axios";
+import { useParams, Link } from "react-router-dom";
+import useProfileMobile from '@hooks/useProfile.mobile';
 
 
 export function ProfileMobile(){
     const { id } = useParams<{ id: string }>();
-    const [post, setPost] = React.useState([{
-        id: '',
-        title: '',
-        influencerId: '',
-        createdAt: '',
-        updatedAt: '',
-    }]);
+    const posts = useProfileMobile();
+    const postList = [];
 
-    async function getInfluencer() {
-        try{
-            const posts = await axios.get(`/api/post`, {params: { influencerId: id }})
-            const data = await posts.data.map((rowData: any) => ({
-                id: rowData.id,
-                title: rowData.title,
-                influencerId: rowData.infleuncerId,
-                createdAt: rowData.createdAt,
-                updatedAt: rowData.updatedAt
-            }))
-            setPost(data);
-        } catch (err) { console.log(err); }
+    for(const post of posts){
+        postList.push(post);
     }
 
-    React.useEffect(() => {
-        getInfluencer();
-    }, []);
+    console.log(postList);
     return (
         <div>
             <ProfileHeader />
@@ -42,7 +23,7 @@ export function ProfileMobile(){
                 <div className='post-list'>
                     <div className='post'>
                         동영상 container
-                        <div className='post-title'>{post[0].title}</div>
+                        <div className='post-title'>dfdf</div>
                     </div>
                     <div className='post'>동영상 container</div>
                     <div className='post'>동영상 container</div>

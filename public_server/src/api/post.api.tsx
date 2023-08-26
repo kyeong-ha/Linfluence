@@ -22,9 +22,7 @@ router.get('/', async (req: Request, res: Response) => {
     try {
         const post = await prisma.post.findMany({
             where: { influencerId: req.query.influencerId },
-            orderBy: {
-                createdAt: 'desc',
-            }
+            orderBy: { createdAt: 'desc' }
         });
         res.status(StatusCode.OK).send(post);
 
