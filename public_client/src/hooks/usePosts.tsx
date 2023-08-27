@@ -1,11 +1,11 @@
 import  React from 'react';
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { Post, IPost } from '../types/post.type';
+import { Post } from '../types/post.type';
 
-export default function useProfileMobile(){
+export default function usePosts(){
     const { id } = useParams<{ id: string }>();
-    const [post, setPost] = React.useState<IPost[]>([]);
+    const [post, setPost] = React.useState<Post[]>([]);
 
     console.log(post);
     React.useEffect(() => {

@@ -34,18 +34,18 @@ export default function MainMobile(){
                                 </div>
                                     <div className='influ-name'>빌리 레코즈</div>
                             </Link>
-                            <div className='influ-wrap'>
+                            <Link to='/baebaeSister' className='influ-wrap'>
                                 <div className='icon'>
                                     <img src=''/>
                                 </div>
-                                <div>숏박스</div>
-                            </div>
-                            <div className='influ-wrap'>
+                                <div>배배자매</div>
+                            </Link>
+                            <Link to='/backjongwon' className='influ-wrap'>
                                 <div className='icon'>
                                     <img src=''/>
                                 </div>
                                 <div>백종원</div>
-                            </div>
+                            </Link>
                             <div className='influ-wrap'>
                                 <div className='icon'>
                                     <img src=''/>

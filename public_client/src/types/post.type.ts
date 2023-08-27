@@ -2,6 +2,24 @@ import { IClip } from './clip.type';
 import React, { Component } from "react";
 
 export interface IPost {  
+    readonly id: string;
+    readonly title: string;
+    readonly clips: IClip[];
+
+    readonly createdAt: string;
+    readonly updatedAt: string;
+
+    readonly influencerId: string;
+
+    setId(id: string): void;
+    setTitle(title: string): void;
+    setClips(clips: IClip[]): void;
+    setCreatedAt(createdAt: string): void;
+    setUpdatedAt(updatedAt: string): void;
+    setInfluencerId(influencerId: string): void;
+}
+
+export class Post {
     id: string;
     title: string;
     clips: IClip[];
@@ -10,23 +28,13 @@ export interface IPost {
     updatedAt: string;
 
     influencerId: string;
-}
 
-export class Post {
-    private id: string;
-    private title: string;
-    private clips: IClip[] | null = null;
-
-    private createdAt: string;
-    private updatedAt: string;
-
-    private influencerId: string;
-
-    constructor(id: string = "", title: string = "", createdAt: string = "", updatedAt: string = "", influencerId: string = "") {
-        this.id = id;
-        this.title = title;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    constructor(influencerId: string){
+        this.id = "";
+        this.title = "";
+        this.clips = [];
+        this.createdAt = "";
+        this.updatedAt = "";
         this.influencerId = influencerId;
     }
 

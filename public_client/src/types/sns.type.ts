@@ -1,26 +1,32 @@
 export interface ISNS {  
+    readonly id: string;
+    readonly naverBlog: string;
+    readonly instagram: string;
+    readonly facebook: string;
+
+    readonly influencerId: string;
+
+    setId(id: string): void;
+    setNaverBlog(naverBlog: string): void;
+    setInstagram(instagram: string): void;
+    setFacebook(facebook: string): void;
+    setInfluencerId(influencerId: string): void;
+}
+
+export class SNS implements ISNS{
     id: string;
     naverBlog: string;
     instagram: string;
     facebook: string;
 
     influencerId: string;
-}
 
-export class SNS {
-    private id: string;
-    private naverBlog: string;
-    private instagram: string;
-    private facebook: string;
-
-    private influencerId: string;
-
-    constructor(id: string, naverBlog: string = "", instagram: string = "", facebook: string = "", influencerId: string) {
-        this.id = id;
-        this.naverBlog = naverBlog;
-        this.instagram = instagram;
-        this.facebook = facebook;
-        this.influencerId = influencerId;
+    constructor(influencerId: string){
+        this.id = ""
+        this.naverBlog = ""
+        this.instagram = ""
+        this.facebook = ""
+        this.influencerId = influencerId
     }
 
     public setId = (id: string): void => {
