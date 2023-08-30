@@ -2,8 +2,11 @@ import express, { Request, Response } from 'express';
 import path from "path";
 
 import * as dotenv from 'dotenv';
-import { getYouTubeChannelBanner } from './api/crawlers/YoutubeChannel.api'
-
+import getYouTubeChannelBanner from './services/youtube/getYoutubeBanner.services';
+// import getYoutubeProfileImg from './services/parser/youtube/profileImg_parser.services';
+import getYoutubeSnsLink from './services/youtube/getYoutubeSnsLink.service';
+import getYoutubeName from './services/youtube/getYoutubeName.service';
+import getYoutubeId from './services/youtube/getYoutubeId.service';
 
 dotenv.config();
 const PORT = process.env.PORT || 5002;
@@ -13,27 +16,28 @@ const app = express();
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api', require('./index'));
-
-// import {crawl} from './utils/crawlers/youtube_crawler.util'
-import cheerio from "cheerio";
+app.use('/api', require('./apis/index.api'));
 
 app.get('/crawl', async (req: Request, res: Response) => {
-    const channelId = 'Bellyvely';
-    const bannerUrl = await getYouTubeChannelBanner(channelId);
 
-    if (bannerUrl) {
-        console.log('Banner URL:', bannerUrl);
+    const url = 'https://www.youtube.com/@Bellyvely';
+    const channelUrl = `view-source:${url}`;
+    const channelId = await getYoutubeId(channelUrl);
+    
+    if (channelId) {
+        console.log('Channel ID:', channelId);
     } else {
-        console.log('Banner image not found for the channel.');
+        console.log('Channel ID not found.');
     }
-    // const result = await crawlYoutubeChannel();
-    // const $ = cheerio.load(result);
-    // const attr = $('ytd-c4-tabbed-header-renderer')
-    // // const attr = $('html > body').children('script[nonce=xdePNTSu7-MPqMkcTK-SYg]')
-    // // ytd-app > #content > #page-manager > ytd-browse > #header > #contentContainer > #channel-container > #channel-header > #channel-header-container > #avatar > #img')
-    // console.log(attr.html())
-    // res.json(attr.html());
+    
+    // const channelId = 'Bellyvely';
+    // const name = await getYoutubeName(channelId);
+
+    // if (name) {
+    //     console.log('Banner URL:', name);
+    // } else {
+    //     console.log('Banner image not found for the channel.');
+    // }
 });
 
 app.listen(PORT, () => {

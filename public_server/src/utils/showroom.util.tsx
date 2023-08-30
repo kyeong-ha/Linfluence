@@ -1,4 +1,4 @@
-import { IClip, IScreenshot, IClipDataJson } from "../types/showroom.type";
+import { IClip, IScreenshot, IClipDataJson } from "../interfaces/showroom.interface";
 export class HttpResp {
     private code: string;
     private message: string;
