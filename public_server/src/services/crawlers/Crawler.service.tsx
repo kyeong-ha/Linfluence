@@ -5,7 +5,7 @@ export async function Crawler(url: string): Promise<string> {
         const browser = await puppeteer.launch({ headless: 'new' });
         const page = await browser.newPage();
 
-        await page.goto(`url`);
+        await page.goto(url);
         const result = await page.content();
         await browser.close();
         

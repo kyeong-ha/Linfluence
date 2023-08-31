@@ -18,23 +18,24 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 
-// Read a 'Single Influencer' by id
-router.get('/:id', async (req: Request, res: Response) => {
+// Read a 'Single Influencer' by influencerId
+router.get('/:influencerId', async (req: Request, res: Response) => {
     try {
+        console.log(req.params.influencerId);
         const influencer = await prisma.influencer.findUnique({
-            where: { id: req.params.id }
+            where: { influencerId: req.params.influencerId }
         });
         res.status(StatusCode.OK).send(influencer);
-
+        console.log(influencer);
     } catch(err) { res.status(StatusCode.DB_ERROR).json(err); }
 });
 
 
-// Update a 'Single Influencer' by id
-router.put('/:id', async (req: Request, res: Response) => {
+// Update a 'Single Influencer' by influencerId
+router.put('/:influencerId', async (req: Request, res: Response) => {
     try {
         const influencer = await prisma.influencer.update({
-            where: { id: req.params.id },
+            where: { influencerId: req.params.influencerId },
             data: req.body,
         });
         res.status(StatusCode.OK).send(influencer);
@@ -43,11 +44,11 @@ router.put('/:id', async (req: Request, res: Response) => {
 });
 
 
-// Delete a 'Single Influencer' by id
-router.delete('/:id', async (req: Request, res: Response) => {
+// Delete a 'Single Influencer' by influencerId 
+router.delete('/:influencerId', async (req: Request, res: Response) => {
     try {
         const influencer = await prisma.influencer.delete({
-            where: { id: req.params.id },
+            where: { influencerId: req.params.influencerId },
         });
         res.status(StatusCode.OK).send(influencer);
 

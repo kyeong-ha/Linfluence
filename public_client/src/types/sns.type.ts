@@ -29,23 +29,14 @@ export class SNS implements ISNS{
         this.influencerId = influencerId
     }
 
-    public setId = (id: string): void => {
-        this.id = id;
-    }
+    public setId = (id: string): void => { this.id = id }
+    public setNaverBlog = (naverBlog: string): void => { this.naverBlog = naverBlog }
+    public setInstagram = (instagram: string): void => { this.instagram = instagram }
+    public setFacebook = (facebook: string): void => { this.facebook = facebook }
+    public setInfluencerId = (influencerId: string): void => { this.influencerId = influencerId }
 
-    public setNaverBlog = (naverBlog: string): void => {
-        this.naverBlog = naverBlog;
-    }
-    
-    public setInstagram = (instagram: string): void => {
-        this.instagram = instagram;
-    }
-
-    public setFacebook = (facebook: string): void => {
-        this.facebook = facebook;
-    }
-    
-    public setInfluencerId = (influencerId: string): void => {
-        this.influencerId = influencerId;
-    }
+    public getId = () => { return this.id }
+    public getNaverBlog = () => { return this.naverBlog }
+    public getInstagram = () => { return this.instagram }
+    public getFacebook = () => { return this.facebook }
 }

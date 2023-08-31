@@ -2,11 +2,12 @@ import express, { Request, Response } from 'express';
 import path from "path";
 
 import * as dotenv from 'dotenv';
-import getYouTubeChannelBanner from './services/youtube/getYoutubeBanner.services';
+import getYouTubeChannelBanner from './services/youtube/getYoutubeBannerImg.services';
 // import getYoutubeProfileImg from './services/parser/youtube/profileImg_parser.services';
 import getYoutubeSnsLink from './services/youtube/getYoutubeSnsLink.service';
 import getYoutubeName from './services/youtube/getYoutubeName.service';
 import getYoutubeId from './services/youtube/getYoutubeId.service';
+import createInfluencer from './prisma/prisma'
 
 dotenv.config();
 const PORT = process.env.PORT || 5002;
@@ -40,6 +41,9 @@ app.get('/crawl', async (req: Request, res: Response) => {
     // }
 });
 
+app.get('/create/:youtubeId', async (req: Request, res: Response) => {
+    await createInfluencer(req.params.youtubeId);
+});
 app.listen(PORT, () => {
     console.log(`[server]: Server is running at http://localhost:${PORT}`)
     

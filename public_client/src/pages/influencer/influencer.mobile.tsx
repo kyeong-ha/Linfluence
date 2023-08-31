@@ -11,30 +11,35 @@ export function MobilePage(){
   const influencer = useInfluencer();
   const posts = usePosts();
   
-  if (influencer.id !== undefined) {
+  if (influencer.influencerId !== undefined) {
     return (
         <>
-          <header className='profile-header'>
-              <div className='vertical-segment'>
-                <Link to='/' className='back-icon'>
-                  뒤로가기
-                </Link>
-                <div className='profile-contents-wrap'>
-                    <div className='profile-contents'>
-                        <h2>{influencer.name}</h2>
-                        <p>{influencer.bio}</p>
-                        <div className='profile-nav wrapper'>
-                            <div className='nav-button'>
-                                <span>게시물</span>
-                                <span>스토어</span>
-                            </div>
-                            <div>필터</div>
-                        </div>
-                    </div>
-                </div>
-              </div>
+          <header className='profile-header'>       
+                {/* <div className='vertical-segment'> */}
+                  <div className='profile-banner-wrap'>
+                  <Link to='/' className='back-icon'>
+                    뒤로가기
+                  </Link>
+                  <img className='profile-banner' src={influencer.bannerImg}/>
+                  </div>
+                  <div className='profile-contents-wrap'>
+                      <div className='profile-contents'>
+                          <h2>{influencer.name}</h2>
+                          <p>{influencer.description}</p>
+                          <div className='profile-nav wrapper'>
+                              <div className='nav-button'>
+                                  <span>게시물</span>
+                                  <span>스토어</span>
+                              </div>
+                              <div>필터</div>
+                          </div>
+                      </div>
+                  </div>
+                {/* </div> */}
               <div className='profile-img-wrap'>
-                  <div className='profile-img'>  
+                  <div className='profile-img' style={{ 
+      backgroundImage: `url(${influencer.profileImg})` 
+    }}>  
                   </div>
               </div>
           </header>

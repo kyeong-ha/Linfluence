@@ -4,17 +4,17 @@ import { useParams, Link } from "react-router-dom";
 import { Post } from '../types/post.type';
 
 export default function usePosts(){
-    const { id } = useParams<{ id: string }>();
+    const { influencerId } = useParams<{ influencerId: string }>();
     const [post, setPost] = React.useState<Post[]>([]);
 
     console.log(post);
     React.useEffect(() => {
         (async () => {
-            const res = await axios.get(`/api/post`, { params: { influencerId: id } })
+            const res = await axios.get(`/api/post`, { params: { influencerId: influencerId } })
             const data = res.data.map((post: any) => ({
-                id: post.id,
+                id: post.influencerId,
                 title: post.title,
-                influencerId: post.infleuncerId ? post.infleuncerId : id,
+                influencerId: post.infleuncerId ? post.infleuncerId : influencerId,
                 createdAt: post.createdAt,
                 updatedAt: post.updatedAt,
                 clips: post.clips ? post.clips : undefined

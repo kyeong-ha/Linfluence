@@ -5,6 +5,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function MainMobile(){
+    const hotInfluencerId = 'Bellyvely';
+
     return (
         <>
             <Header />
@@ -34,7 +36,7 @@ export default function MainMobile(){
                                 </div>
                                     <div className='influ-name'>빌리 레코즈</div>
                             </Link>
-                            <Link to='/baebaeSister' className='influ-wrap'>
+                            <Link to={hotInfluencerId} className='influ-wrap'>
                                 <div className='icon'>
                                     <img src=''/>
                                 </div>

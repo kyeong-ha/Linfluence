@@ -13,9 +13,12 @@ datasource db {
 // Clip : Product = 1 : N
 
 model Influencer {
-  id              String        @id @default(uuid())
+  influencerId    String        @id @default(uuid())
+  youtubeId       String        @default("")
   name            String        @default("")
-  bio             String        @default("")
+  description     String        @default("")
+  profileImg      String        @default("")
+  bannerImg       String        @default("")
   posts           Post[]
   snsList         SNS?     
 
@@ -24,41 +27,41 @@ model Influencer {
 }
 
 model SNS {
-  id              String           @id @default(uuid())
+  snsId           String        @id @default(uuid())
   naverBlog       String        @default("undefined")
   instagram       String        @default("undefined")
   facebook        String        @default("undefined")
 
-  influencer      Influencer    @relation(fields: [influencerId], references: [id])
+  influencer      Influencer    @relation(fields: [influencerId], references: [influencerId])
   influencerId    String        @unique
 }
 
 model Post {
-  id              String           @id @default(uuid())
+  postId          String        @id @default(uuid())
   title           String        @default("")
   clips           Clip[]
 
   createdAt       DateTime      @default(now()) @map("created_at")
   updatedAt       DateTime      @updatedAt @map("updated_at")
 
-  influencer      Influencer    @relation(fields: [influencerId], references: [id])
+  influencer      Influencer    @relation(fields: [influencerId], references: [influencerId])
   influencerId    String        @default("")
 }
 
 model Clip {
-  id              String           @id @default(uuid())
+  clipId          String        @id @default(uuid())
   clipUrl         String        @default("undefined")
   products        Product[]
 
-  post            Post          @relation(fields: [postId], references: [id])
+  post            Post          @relation(fields: [postId], references: [postId])
   postId          String           
 }
 
 model Product {
-  id        String    @id @default(uuid())
-  imageUrl  String @default("undefined")
-  infoJson  String @default("undefined")
+  id              String    @id @default(uuid())
+  imageUrl        String    @default("undefined")
+  infoJson        String    @default("undefined")
 
-  clip              Clip  @relation(fields: [clipId], references: [id])
-  clipId            String
+  clip            Clip      @relation(fields: [clipId], references: [clipId])
+  clipId          String
 }

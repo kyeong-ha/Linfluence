@@ -17,6 +17,13 @@ export interface IPost {
     setCreatedAt(createdAt: string): void;
     setUpdatedAt(updatedAt: string): void;
     setInfluencerId(influencerId: string): void;
+
+    getId(id: string): void;
+    getTitle(title: string): void;
+    getClips(clips: IClip[]): void;
+    getCreatedAt(createdAt: string): void;
+    getUpdatedAt(updatedAt: string): void;
+    getInfluencerId(influencerId: string): void;
 }
 
 export class Post {

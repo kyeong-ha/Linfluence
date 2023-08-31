@@ -12,12 +12,24 @@ p{
     left: 0;
     top: 0;
     width: 100vw;
-    height: 56vh;
-    background-color: #b6bbc8; // ** need to handling a background-img
-    *{
-        margin: 4.5%;
+    height: auto;
+    margin-bottom: 5%;
+    .back-icon{
+        z-index: 999;
+    }
+}
+.profile-banner-wrap{
+    display: flex;
+    .profile-banner{
+        width: 100vw;
+        height: fit-content;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
     .back-icon{
+        position: absolute;
+        top: 0;
+        left: 0;
         z-index: 999;
     }
 }
@@ -31,22 +43,25 @@ p{
 }
 .profile-contents-wrap {
     display: grid;
-    align-items: end;
     width: 100%;
-    height: 50%;
     margin: 0 auto;
     text-align: center;
     background-color:#dde0ea;
-
+    height: 100%;
     *{ margin: 0 3%; }
     .profile-contents {
         display: flex;
+        justify-content: space-around;
         flex-direction: column;
-        justify-content: space-evenly;
-
-        position: relative;
-        height: calc(100% - 22vw);
+        // position: relative;
+        // height: calc(100% - 22vw);
         margin: 0;
+        margin-top: 13vw;
+        padding: 4% 0;
+    }
+    p{
+        padding: 2.5% 0;
+        line-height: 1.5em;
     }
 }
 
@@ -55,21 +70,24 @@ p{
     width: inherit;
     height: auto;
     /* height: inherit; */
-    top: 50%;
+    top: 20px;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, 0, 0);
     position: absolute;
     display: flex;
     justify-content: center;
     .profile-img{
         // position: absolute;
-        width: 42vw;
-        height: 42vw;
-        top: 50%;
-        left: 50%;
+        width: 25vw;
+        height: 25vw;
+        // top: 50%;
+        // left: 50%;
         margin: auto 0;
         background-color: #a9aebb;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
+    
 }
 
 .profile-nav{
@@ -84,8 +102,8 @@ p{
     }
 }
 
-// .wrapper{
 //     position: absolute;
+// .wrapper{
 //     width: 100%;
 //     margin: 0;
 //     bottom: 0;
