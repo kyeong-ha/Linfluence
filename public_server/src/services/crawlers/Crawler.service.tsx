@@ -8,7 +8,6 @@ export async function Crawler(url: string): Promise<string> {
         await page.goto(url);
         const result = await page.content();
         await browser.close();
-        
         return result ? result : '';
     } catch(err) {
         console.error('Error fetching channel:', err);
