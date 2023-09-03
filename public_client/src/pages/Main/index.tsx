@@ -1,10 +1,10 @@
 import colors from '../../types/constants/colors';
-import Header from '../../components/Headers/Header';
-import '../../styles/main/main.container.scss'
+import Header from '@components/Header/Header';
+import '@styles/Main/index.scss'
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function MainMobile(){
+export default function MainPage(){
     const hotInfluencerId = 'Bellyvely';
 
     return (

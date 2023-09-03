@@ -5,9 +5,9 @@ import  React from 'react';
 import { useParams, Link } from "react-router-dom";
 import useInfluencer from '@hooks/useInfluencer';
 import usePosts from '@hooks/usePosts';
-import { NotFoundErrorPage } from '@pages/not_found.error';
+import NotFoundErrorPage from '@pages/Error/NotFoundError';
 
-export function MobilePage(){
+export default function InfluencerPage(){
   const influencer = useInfluencer();
   const posts = usePosts();
   

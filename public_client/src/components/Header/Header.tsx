@@ -1,8 +1,9 @@
-import '@styles/main/main.header.scss';
+import '@styles/Main/Header.scss';
 
 export default function Header() {
     return (
-        <header className='main-header'>
+        <>
+        <header className='header'>
             <div className='contents'>
                 <div>로고</div>
                 <div className='search-bar'>검색바</div>
@@ -12,5 +13,6 @@ export default function Header() {
                 </div>
             </div>
         </header>
+        </>
     )
 }

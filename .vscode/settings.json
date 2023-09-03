@@ -1,3 +1,4 @@
 {
-    "vim.mouseSelectionGoesIntoVisualMode": false
+    "vim.mouseSelectionGoesIntoVisualMode": false,
+    "editor.tabSize": 2
 }
