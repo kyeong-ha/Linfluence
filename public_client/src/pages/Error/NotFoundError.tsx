@@ -1,4 +1,4 @@
-import '@styles/influencer/influencer.container.scss';
+import '@styles/influencer/Container.scss';
 import '@styles/influencer/influencer.scss';
 
 import  React from 'react';

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
@@ -8,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
   }
   html, 
   body {
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.text};
     width:100%; 
     font-size: 11px;
     font-family:'Noto Sans KR', sans-serif;
@@ -55,11 +58,9 @@ const GlobalStyle = createGlobalStyle`
     word-break:break-all;
   }
   a {
-    color:#000;
     text-decoration:none;
   }
   a:hover {
-    color:#000;
     text-decoration:none;
   }
   *, :after, :before {

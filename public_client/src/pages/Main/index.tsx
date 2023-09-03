@@ -1,6 +1,6 @@
-import colors from '../../types/constants/colors';
+import colors from '../../types/Constants/colors';
 import Header from '@components/Header/Header';
-import '@styles/Main/index.scss'
+import '@styles/Main/Main.scss'
 import React from 'react';
 import { Link } from 'react-router-dom';
 
