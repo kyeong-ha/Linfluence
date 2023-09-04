@@ -1,11 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
 export const LightTheme: DefaultTheme = {
-  breakpoints: {
-    small: "768px",
-    medium: "992px",
-    large: "1200px",
-  },
   color: {
     text: "#2b2b2b",
     background: "#fefefe",

@@ -14,7 +14,7 @@ export default function InfluencerPage(){
   if (influencer.influencerId !== undefined) {
     return (
         <>
-          <header className='profile-header'>       
+          <header className='profile-header'>
                 {/* <div className='vertical-segment'> */}
                   <div className='profile-banner-wrap'>
                   <Link to='/' className='back-icon'>

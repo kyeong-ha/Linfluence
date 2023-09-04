@@ -9,7 +9,14 @@ export default function MainPage(){
 
     return (
         <>
-            <Header />
+            <Header>
+                <span>로고</span>
+                <span className='search-bar'>검색바</span>
+                <span className='buttons-wrap'>
+                    <div>검색</div>
+                    <div>+</div>
+                </span>
+            </Header>
             <div className='container'>
                 <img className='center-image'/>
                 <div className='category'>

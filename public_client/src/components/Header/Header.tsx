@@ -1,16 +1,12 @@
 import '@styles/Main/Header.scss';
-
-export default function Header() {
+import { ReactNode } from 'react';
+// 페이지 최상단 + child 요소들이 flex + absolete 속성
+export default function Header({ children } : { children: ReactNode[] }) {
     return (
         <>
-        <header className='header'>
+        <header>
             <div className='contents'>
-                <div>로고</div>
-                <div className='search-bar'>검색바</div>
-                <div className='buttons-wrap'>
-                    <div>검색</div>
-                    <div>+</div>
-                </div>
+                {children}
             </div>
         </header>
         </>
