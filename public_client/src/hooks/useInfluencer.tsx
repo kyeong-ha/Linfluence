@@ -1,35 +1,35 @@
-import  { useState, useEffect } from 'react';
+import  { useState, useEffect, useContext } from 'react';
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { IInfluencer, Influencer } from '../types/influencer.type';
+import create from 'zustand';
 
-export default function usePosts(){
+
+interface IdState {
+    id: Influencer;
+    setId:(by: string) => void;
+}
+
+const IdStore = create<IdState>()((set) => ({
+    id: new Influencer(),
+    setId: (by: any) => set((state: any) => ({ ...state })),
+}));
+
+export default function useInfluencer(){
     const { influencerId } = useParams<{ influencerId: string }>();
-    const [influencer, setInfluencer] = useState(new Influencer());
-
-    console.log(influencer);
-    useEffect(() => {
-        (async () => {
+    // const [influencer, setInfluencer] = useContext(new Influencer());
+    const { id, setId } = IdStore();
+    
+    async function onChangeId(){
+        if(influencerId !== id.influencerId){
             await axios.get(`/api/influencer/${influencerId}`)
-            .then((res) => setInfluencer((prevState) => {
-                return{
-                    ...prevState,
-                    influencerId: res.data.influencerId,
-                    youtubeId: res.data.youtubeId,
-                    name: res.data.name,
-                    description: res.data.description,
-                    profileImg: res.data.profileImg,
-                    bannerImg: res.data.bannerImg,
+            .then((res) => setId(res.data));
+        }
+    };
 
-                    createdAt: res.data.createdAt,
-                    updatedAt: res.data.updatedAt,
-
-                    posts: res.data.posts ? res.data.posts : undefined,
-                    snsList: res.data.snsList ? res.data.snsList : undefined
-                }
-            }));
-        })();
+    useEffect(() => {
+        onChangeId();
     }, []);
 
-    return influencer;
+    return id;
 }
