@@ -37,25 +37,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
-const path_1 = __importDefault(require("path"));
-const index_1 = __importDefault(require("./db/models/index"));
+const getYoutubeId_service_1 = __importDefault(require("./services/youtube/getYoutubeId.service"));
+const prisma_1 = __importDefault(require("./prisma/prisma"));
 dotenv.config();
+const PORT = process.env.PORT || 5002;
 const app = (0, express_1.default)();
-const PORT = process.env.PORT;
-app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
-app.get('/', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../public/index.html'));
-});
-// app.use('/s3', ClipApiController);
-app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`Server started: http://localhost:${PORT}`);
-    yield index_1.default.authenticate()
-        .then(() => __awaiter(void 0, void 0, void 0, function* () {
-        console.log('Authentication successful');
-    }))
-        .catch(e => {
-        console.log(e);
-    });
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use('/api', require('./apis/index.api'));
+app.get('/crawl', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const url = 'https://www.youtube.com/@Bellyvely';
+    const channelUrl = `view-source:${url}`;
+    const channelId = yield (0, getYoutubeId_service_1.default)(channelUrl);
+    if (channelId) {
+        console.log('Channel ID:', channelId);
+    }
+    else {
+        console.log('Channel ID not found.');
+    }
 }));
-exports.default = app;
+app.get('/create/:youtubeId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield (0, prisma_1.default)(req.params.youtubeId);
+}));
+app.listen(PORT, () => {
+    console.log(`[server]: Server is running at http://localhost:${PORT}`);
+});
 //# sourceMappingURL=app.js.map

@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from 'express';
-import { StatusCode } from '../modules/Response.lib';
+import { StatusCode } from '@modules/Response.lib';
 
 const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient();

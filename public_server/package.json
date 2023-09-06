@@ -17,9 +17,9 @@
     "reflect-metadata": "^0.1.13"
   },
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "npx ts-node ./dist/app.js",
     "build": "tsc",
-    "dev": "nodemon --watch src --exec 'npx' 'ts-node' --esm ./src/app.tsx"
+    "dev": "nodemon --exec 'npx' 'ts-node' -r 'tsconfig-paths/register' --esm ./src/app.tsx"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.38",
@@ -28,6 +28,7 @@
     "@types/node": "^20.5.0",
     "@types/validator": "^13.11.1",
     "http-proxy-middleware": "^2.0.6",
+    "tsconfig-paths": "^4.2.0",
     "typeorm": "^0.3.17",
     "typescript": "^5.1.6"
   }

@@ -5,12 +5,12 @@
     "lib": ["dom", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "esnext.asynciterable"],
     "allowJs": true,
     "sourceMap": true,
-    "rootDir": "./src",
+    "baseUrl": ".",
     "outDir": "./dist",
-    // "isolatedModules": true,
+    "isolatedModules": true,
     "jsx": "react",
-    "strict": true, /* Enable all strict type-checking options. */
-    // "moduleResolution": "node",
+    "strict": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,25 +19,19 @@
     "emitDecoratorMetadata" : true,
     "experimentalDecorators" : true,
     "strictPropertyInitialization": false,
-    
-		"strictFunctionTypes": true,
-    "noImplicitThis": true,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"resolveJsonModule": true,
-
-
-		// "moduleResolution": "node",
-		// "removeComments": true,
-		// "noImplicitAny": true,
-		// "strictFunctionTypes": true,
-		// "noImplicitThis": true,
+    "paths": {
+      "@apis/*": ["src/apis/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@modules/*": ["src/modules/*"],
+      "@prisma/*": ["src/prisma/*"]
+    },
+    // "noImplicitThis": true,
 		// "noUnusedLocals": false,
 		// "noUnusedParameters": false,
 		// "noImplicitReturns": true,
 		// "noFallthroughCasesInSwitch": true,
-		// "resolveJsonModule": true,
-  }
+		"resolveJsonModule": true,
+  },
+  "include": ["src"]
+
 }

@@ -11,7 +11,7 @@ module.exports = {
             "@assets": path.resolve(__dirname, "./src/assets/"),
             "@auth": path.resolve(__dirname, "./src/auth/"),
             "@components": path.resolve(__dirname, "./src/components/"),
-            "@types": path.resolve(__dirname, "./src/types/"),
+            "@/types": path.resolve(__dirname, "./src/types/"),
             "@hooks": path.resolve(__dirname, "./src/hooks/"),
             "@pages": path.resolve(__dirname, "./src/pages/"),
             "@styles": path.resolve(__dirname, "./src/styles/"),

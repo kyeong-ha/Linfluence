@@ -15,12 +15,12 @@ export default async function YouTubeSnsLinkParser(channelId: string): Promise<R
             const url = $(element).find('.yt-channel-external-link-view-model-wiz__link a').text();
 
             console.log(title, url);
-            linkObject[title] = url || {'',''};
+            linkObject[title] = url || '';
         });
 
         return linkObject;
     }catch (err) {
         console.error('Error fetching channel sns link:', err);
-        return {'',''};
+        return {'': ''};
     }
 }

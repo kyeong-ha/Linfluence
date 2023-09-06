@@ -30,15 +30,6 @@ app.get('/crawl', async (req: Request, res: Response) => {
     } else {
         console.log('Channel ID not found.');
     }
-    
-    // const channelId = 'Bellyvely';
-    // const name = await getYoutubeName(channelId);
-
-    // if (name) {
-    //     console.log('Banner URL:', name);
-    // } else {
-    //     console.log('Banner image not found for the channel.');
-    // }
 });
 
 app.get('/create/:youtubeId', async (req: Request, res: Response) => {
