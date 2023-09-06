@@ -40,7 +40,10 @@ model Post {
   postId          String        @id @default(uuid())
   title           String        @default("")
   clips           Clip[]
-
+  thumbnailImg    String        @default("")
+  tags            String        @default("")
+  categories      String        @default("")
+  
   createdAt       DateTime      @default(now()) @map("created_at")
   updatedAt       DateTime      @updatedAt @map("updated_at")
 

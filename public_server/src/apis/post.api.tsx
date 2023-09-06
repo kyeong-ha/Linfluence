@@ -7,11 +7,17 @@ const router: Router = express.Router();
 
 
 // Create a new 'Post'
-router.post('/', async (req: Request, res: Response) => {
+router.post('/:influencerId', async (req: Request, res: Response) => {
+    console.log('df');
+    console.log(req.body);
+    console.log(req.params.influencerId)
     try {
-        const data = req.body;
+        const data = {
+            ...req.params,
+            ...req.body,
+        };
         const post = await prisma.post.create({ data });
-        
+        console.log(post)
         res.status(StatusCode.CREATED).json(post);
 
     } catch(err) { res.status(StatusCode.SERVICE_UNAVAILABLE).json(err); }

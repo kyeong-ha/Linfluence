@@ -2,9 +2,9 @@ import { DefaultTheme } from "styled-components";
 
 export const LightTheme: DefaultTheme = {
   color: {
-    text: "#2b2b2b",
-    background: "#fefefe",
-    main: "#f9ca24",
+    text: "000000b2",
+    background: "#ffffff",
+    main: "#FF0405",
     sub: "#f0932b",
     point: "#eb4d4b",
   },

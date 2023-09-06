@@ -5,7 +5,6 @@
 }
 
 .post-list{
-    top: 56vh; // common style with main container without 'top'
     width: 100vw;
     height: auto;
     position: absolute;
@@ -20,7 +19,6 @@
     width: 90%;
     height: 60vw;
     margin: 5% 5% 0% 5%;
-    z-index: -999;
     background-color: #dadfeb;
     display: flex;
     flex-direction: column;

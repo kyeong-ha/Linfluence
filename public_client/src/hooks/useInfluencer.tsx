@@ -1,13 +1,14 @@
-import  React from 'react';
+import  { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { IInfluencer, Influencer } from '../types/influencer.type';
 
 export default function usePosts(){
     const { influencerId } = useParams<{ influencerId: string }>();
-    const [influencer, setInfluencer] = React.useState(new Influencer());
+    const [influencer, setInfluencer] = useState(new Influencer());
 
-    React.useEffect(() => {
+    console.log(influencer);
+    useEffect(() => {
         (async () => {
             await axios.get(`/api/influencer/${influencerId}`)
             .then((res) => setInfluencer((prevState) => {

@@ -1,62 +1,61 @@
-import '@styles/influencer/Container.scss';
-import '@styles/influencer/influencer.scss';
+// import '@styles/influencer/Container.scss';
+// import '@styles/influencer/influencer.scss';
 
-import  React from 'react';
+import  { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
 import useInfluencer from '@hooks/useInfluencer';
 import usePosts from '@hooks/usePosts';
+import BackButton from '@components/Button/BackButton';
+import Header from '@components/Header/Header';
+import Text from '@components/common/Text';
+import Profile from '@components/Profile/Profile';
+import ProfileBanner from '@components/Profile/ProfileBanner';
+import ProfileImg from '@components/Profile/ProfileImg';
+import ProfileNav from '@components/Profile/ProfileNav';
 import NotFoundErrorPage from '@pages/Error/NotFoundError';
-
+import VideoThumbnail from '@components/Thumbnail/VideoThumbnail';
+import ReadMoreButton from '@components/Button/ReadMoreButton';
 export default function InfluencerPage(){
   const influencer = useInfluencer();
   const posts = usePosts();
-  
+
+  // Header +a
+  // grid 1rem : 1fr : 1rem 비율 + left 정렬 + 스크롤시 Backbutton, Name, Fileter 고정
+
+  const [readMore, setReadMore] = useState(false);
+
+  /* 인플루언서 ID가 있는 경우 */
   if (influencer.influencerId !== undefined) {
     return (
         <>
-          <header className='profile-header'>
-                {/* <div className='vertical-segment'> */}
-                  <div className='profile-banner-wrap'>
-                  <Link to='/' className='back-icon'>
-                    뒤로가기
-                  </Link>
-                  <img className='profile-banner' src={influencer.bannerImg}/>
-                  </div>
-                  <div className='profile-contents-wrap'>
-                      <div className='profile-contents'>
-                          <h2>{influencer.name}</h2>
-                          <p>{influencer.description}</p>
-                          <div className='profile-nav wrapper'>
-                              <div className='nav-button'>
-                                  <span>게시물</span>
-                                  <span>스토어</span>
-                              </div>
-                              <div>필터</div>
-                          </div>
-                      </div>
-                  </div>
-                {/* </div> */}
-              <div className='profile-img-wrap'>
-                  <div className='profile-img' style={{ 
-      backgroundImage: `url(${influencer.profileImg})` 
-    }}>  
-                  </div>
-              </div>
-          </header>
-  
-            <div className='container'>
-                <div className='post-list'>
+          <Profile>
+            <BackButton/>
+            <ProfileImg src={influencer.profileImg}/>
+            <Text size='1.5rem' value={influencer.name} weight='600' />
+            <Text value={
+              readMore ? influencer.description : `${influencer.description.substring(0, influencer.description.indexOf('\n'))}`}/>
+              <button id="readmore" onClick={() => setReadMore(!readMore)}>
+                {readMore ? <ReadMoreButton $top/> : <ReadMoreButton $bottom/> }
+              </button>
+              
+            <ProfileBanner src={influencer.bannerImg}/>
+            <ProfileNav/>
+          </Profile>
+
+            <div id='container'>
+                <div id='post-list'>
                   { posts.map(post => (
-                    <div key={post.id} className='post'>
-                      <div>동영상 container</div>
-                      <div>{post.title}</div>
-                    </div>
+                    <a key={post.postId} id='post'>
+                      <VideoThumbnail src={post.thumbnailImg} title={post.title}></VideoThumbnail>
+                    </a>
                   )) }
                 </div>
             </div>
         </>
     )
-  }else {
+  }
+  /* 인플루언서 ID가 없는 경우 */
+  else {
     return (
       <NotFoundErrorPage />
     );

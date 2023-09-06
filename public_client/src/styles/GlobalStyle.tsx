@@ -3,44 +3,33 @@ import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
-    margin:0;padding:0;border:0;
+    margin:0; padding:0; border:0;
   }
-  html, 
-  body {
+  #root { position:relative; }
+  html,body {
     background-color: ${({ theme }) => theme.color.background};
     color: ${({ theme }) => theme.color.text};
-    width:100%; 
+    width: 100%;
     font-size: 11px;
     font-family:'Noto Sans KR', sans-serif;
     text-align: center;
-    font-weight: 100;
-    text-align: center;
-  }
-  html, h1, h2, h3, h4, h5, h6, 
-  form, fieldset, img {
-    margin:0;
-    padding:0;
-    border:0;
+    position: relative;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family:'Noto Sans KR', sans-serif;
     font-size:1rem;
-    font-weight: 100;
   }
   ul {
-    margin:0;
-    padding:0;
     list-style:none;
   }
   label, input, button, select, img {
     vertical-align:middle;
-    font-size:1em;
+    font-size:1rem;
   }
   input, button {
-    margin:0;
-    padding:0;
     font-family:'Noto Sans KR', sans-serif;
-    font-size:1em;
+    font-size:1rem;
+    width: fit-content;
   }
   input[type="submit"] {
     cursor:pointer
@@ -50,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
   textarea, select {
     font-family:'Noto Sans KR', sans-serif;
-    font-size:1em;
+    font-size:1rem;
   }
   p {
     word-break:break-all;
@@ -65,8 +54,6 @@ const GlobalStyle = createGlobalStyle`
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 `;
 
