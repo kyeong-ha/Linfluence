@@ -20,13 +20,14 @@ function App() {
 
     return (
         <CustomThemeContext.Provider value={ themeProps }>
-            {/* <ThemeProvider theme={ themeProps.theme === "light" ? LightTheme : DarkTheme }> */}
             <ThemeProvider theme={ themeProps.theme === "light" ? LightTheme : LightTheme }>
                 <GlobalStyle />
+
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/:influencerId" element={<InfluencerPage />} />
                 </Routes>
+                
             </ThemeProvider>
         </CustomThemeContext.Provider>
     );

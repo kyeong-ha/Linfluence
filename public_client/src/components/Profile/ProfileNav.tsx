@@ -5,13 +5,13 @@ const Nav = styled.span`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 3% 5%;
-    background-color: #999;
+    padding: 1.5em 5%;
+    // background-color: #999;
 `;
 
 const NavComponents = styled.span`
     word-break: keep-all;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 `
 
 export default function ProfileNav() {

@@ -10,10 +10,14 @@ const Contents = styled.div`
   left: 0;
   z-index: 1;
   background-color: #fff;
+
   > button { margin: 3%; margin-bottom: 0; }
-  > p{
-    margin: 0.5rem 3%;
+
+  > #channel-name {
+    margin-top: 0.8em;
+    margin-bottom: 0.2em;
   }
+  
   #readmore {
     align-self: center;
     background-color: transparent;

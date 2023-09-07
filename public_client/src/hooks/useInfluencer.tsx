@@ -1,35 +1,20 @@
-import  { useState, useEffect, useContext } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { IInfluencer, Influencer } from '../types/influencer.type';
-import create from 'zustand';
+import { Influencer } from '../types/influencer.type';
 
-
-interface IdState {
-    id: Influencer;
-    setId:(by: string) => void;
-}
-
-const IdStore = create<IdState>()((set) => ({
-    id: new Influencer(),
-    setId: (by: any) => set((state: any) => ({ ...state })),
-}));
-
-export default function useInfluencer(){
+export default function usePosts(){
     const { influencerId } = useParams<{ influencerId: string }>();
-    // const [influencer, setInfluencer] = useContext(new Influencer());
-    const { id, setId } = IdStore();
-    
-    async function onChangeId(){
-        if(influencerId !== id.influencerId){
-            await axios.get(`/api/influencer/${influencerId}`)
-            .then((res) => setId(res.data));
-        }
-    };
+    const [influencer, setInfluencer] = useState(new Influencer());
 
     useEffect(() => {
-        onChangeId();
+        (async () => {
+            await axios.get(`/api/influencer/${influencerId}`)
+            .then((res) => setInfluencer(() => {
+                return{ ...res.data }
+            }));
+        })();
     }, []);
 
-    return id;
+    return influencer;
 }

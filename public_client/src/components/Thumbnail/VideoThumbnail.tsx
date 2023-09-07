@@ -5,20 +5,20 @@ const Thumb = styled.div`
     position: relative;
     width: auto;
     height: min-content;
-    margin: 1.5rem 5%;
+    margin: 0 5% 1.5em 5%;
     border-radius: 0px 0px 10px 10px;
     border-radius: 1.1em;
     overflow: hidden;
-    box-shadow: 0 0 4px #00000062;
-
+    box-shadow: 0px 0px 3px #0000006e;
+    
     > img { width: 100%; object-fit: cover; }
 
     > #details {
       width: 100%;
       height: 33%;
-      background-color: rgb(255 255 255 / 80%);
-      backdrop-filter: blur(10px);
-      box-shadow: 0px 0px 4px #00000059;
+      background-color: #ffffffe3;
+      backdrop-filter: blur(5px);
+      box-shadow: 0px 0px 3px #0000006e;
       position: absolute;
       bottom: 0;
       display: flex;
@@ -29,7 +29,9 @@ const Thumb = styled.div`
       > #thumb-title { 
         font-size: 1.2em;
         font-weight: bold;
+        text-align: left;
       }
+
       > p {
         text-overflow: ellipsis;
         white-space: nowrap;

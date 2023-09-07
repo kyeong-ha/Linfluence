@@ -8,6 +8,7 @@ export default function useTheme() {
   }, []);
 
   // User의 시스템 환경의 테마를 인식해서 모드를 설정함
+  // 작동 확인 안 해봄
   useLayoutEffect(() => {
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) 
       setTheme("dark");

@@ -1,6 +1,3 @@
-import '@styles/influencer/Container.scss';
-import '@styles/influencer/influencer.scss';
-
 import  React from 'react';
 import { useParams, Link } from "react-router-dom";
 
