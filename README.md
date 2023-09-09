@@ -1,11 +1,16 @@
-# Linfluence Public Website
+# 🚀 Linfluence Web Application
 
 
+## Quick Start
 
-## 🚀 Quick start
+## 프로젝트 구조 v1 (2023-09-09)
 
-## Directory Structure v1 (2023-09-09)
-### /src/assets
-- images, videos 등의 
 
-/src: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. src is a convention for “source code”.
+### 📁 private_app
+관리자 웹 사이트
+
+
+### 📁 public_app
+
+사용자 웹 사이트
+
