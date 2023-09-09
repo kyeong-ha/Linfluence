@@ -23,9 +23,9 @@
     "zustand": "^4.4.1"
   },
   "scripts": {
-    "client-dev": "webpack-dev-server --config webpack.dev.js --open --hot",
-    "client-build": "webpack --config webpack.prod.js",
-    "client-start": "webpack --config webpack.dev.js"
+    "public-dev": "webpack-dev-server --config webpack.dev.js --open --hot",
+    "public-build": "webpack --config webpack.prod.js",
+    "public-start": "webpack --config webpack.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

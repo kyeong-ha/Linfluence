@@ -17,9 +17,9 @@
     "reflect-metadata": "^0.1.13"
   },
   "scripts": {
-    "start": "npx ts-node ./dist/app.js",
-    "build": "tsc",
-    "dev": "nodemon --exec 'npx' 'ts-node' -r 'tsconfig-paths/register' --esm ./src/app.tsx"
+    "private-start": "npx ts-node ./dist/app.js",
+    "private-build": "tsc",
+    "private-dev": "nodemon --exec 'npx' 'ts-node' -r 'tsconfig-paths/register' --esm ./src/app.tsx"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.38",
