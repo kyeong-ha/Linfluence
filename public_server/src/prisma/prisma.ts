@@ -5,6 +5,9 @@ import getYoutubeProfileImg from "../services/youtube/getYoutubeProfileImg.servi
 import getYoutubeBannerImg from "../services/youtube/getYoutubeBannerImg.services";
 // import getYoutubeSnsLink from "../services/youtube/getYoutubeSnsList.services";
 
+/* 기능요약: 크롤링한 인플루언서의 데이터를 MySQL server에 저장함 */
+/* 손봐야할 부분: 인플루언서가 없을시 에러 핸들링 -> 에러메시지로 반환(서버가 꺼지면 안됨) */
+
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 

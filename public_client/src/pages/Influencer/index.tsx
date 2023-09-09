@@ -24,8 +24,7 @@ export default function InfluencerPage(){
           <Profile>
             <BackButton/>
 
-            <ProfileImg src={influencer.profileImg}/>
-
+            <ProfileImg src={influencer.profileImg}></ProfileImg>
             <Text id='channel-name' size='1.5rem' value={influencer.name} weight='600'/>
             <Text value={ readMore ? influencer.description : `${influencer.description.substring(0, influencer.description.indexOf('\n'))}`} />
 

@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     font-family:'Noto Sans KR', sans-serif;
     text-align: center;
     position: relative;
+    overflow-x: clip;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family:'Noto Sans KR', sans-serif;

@@ -6,11 +6,13 @@ const Contents = styled.div`
   display: flex;
   flex-direction: column;
   position: sticky;
+  width: 100%;
+  height: fit-content;
   top: 0;
   left: 0;
   z-index: 1;
   background-color: #fff;
-
+  
   > button { margin: 3%; margin-bottom: 0; }
 
   > #channel-name {

@@ -1,5 +1,3 @@
-
-import { ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components'
 
 const SVG = styled.div<ArrowSVGProps>`
