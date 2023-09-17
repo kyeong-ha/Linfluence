@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Influencer {
+  influencerId String   @id @default(uuid())
+  youtubeId    String   @default("")
+  name         String   @default("")
+  description  String   @default("")
+  profileImg   String   @default("")
+  bannerImg    String   @default("")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt
+  posts        Post[]
+  snsList      SNS?
+}
+
+model SNS {
+  snsId        String     @id @default(uuid())
+  naverBlog    String     @default("undefined")
+  instagram    String     @default("undefined")
+  facebook     String     @default("undefined")
+  influencerId String     @unique
+  influencer   Influencer @relation(fields: [influencerId], references: [influencerId])
+}
+
+model Post {
+  postId       String     @id @default(uuid())
+  title        String     @default("")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  influencerId String     @default("")
+  categories   String     @default("")
+  tags         String     @default("")
+  thumbnailImg String     @default("")
+  clips        Clip[]
+  influencer   Influencer @relation(fields: [influencerId], references: [influencerId])
+
+  @@index([influencerId], map: "Post_influencerId_fkey")
+}
+
+model Clip {
+  clipId   String    @id @default(uuid())
+  clipUrl  String    @default("undefined")
+  postId   String
+  post     Post      @relation(fields: [postId], references: [postId])
+  products Product[]
+
+  @@index([postId], map: "Clip_postId_fkey")
+}
+
+model Product {
+  id       String @id @default(uuid())
+  imageUrl String @default("undefined")
+  infoJson String @default("undefined")
+  clipId   String
+  clip     Clip   @relation(fields: [clipId], references: [clipId])
+
+  @@index([clipId], map: "Product_clipId_fkey")
+}
